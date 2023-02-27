@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct Eco_friendlyStepApp: App {
+struct TryHealthKitApp: App {
+    var healthVM = HealthKitViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(healthVM)
         }
     }
 }
