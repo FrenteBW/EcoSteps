@@ -23,7 +23,8 @@
 
 # 핵심 코드
 
-func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
+
+    func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         let calendar = Calendar.current
         
         let startDate = calendar.startOfDay(for: Date())
