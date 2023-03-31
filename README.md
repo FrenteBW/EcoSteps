@@ -23,8 +23,7 @@
 
 # 핵심 코드
 '''
-//하루 계단 오르기 수행 횟수
-    func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
+func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         let calendar = Calendar.current
         
         let startDate = calendar.startOfDay(for: Date())
@@ -49,8 +48,33 @@
         
         healthStore.execute(query)
     }
+    
+    //월간 계단 오르기 횟수
+    func monthreadStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
+        let calendar = Calendar.current
+        let now = Date()
+        let startDate = calendar.date(from: calendar.dateComponents([.year, .month], from: calendar.startOfDay(for: now)))!
+        let endDate = Date()
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+        
+        let query = HKSampleQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
+            guard error == nil, let samples = results as? [HKQuantitySample] else {
+                completion(0.0)
+                return
+            }
+            
+            var monthtotalFlightsClimbed = 0.0
 
-
+            for sample in samples {
+                if !sample.description.contains("Watch"){
+                    monthtotalFlightsClimbed += 1
+                }
+            }
+            completion(monthtotalFlightsClimbed)
+        }
+        
+        healthStore.execute(query)
+    }
 '''
 
 
