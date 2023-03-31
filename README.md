@@ -22,7 +22,7 @@
 <img width="990" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-28%20%EC%98%A4%ED%9B%84%201 24 51" src="https://user-images.githubusercontent.com/88021794/229042279-52d7e877-8e93-488b-9b4c-e17e1e10d518.png">
 
 # 핵심 코드
-'''
+
 func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         let calendar = Calendar.current
         
@@ -75,8 +75,6 @@ func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion
         
         healthStore.execute(query)
     }
-'''
-
 
 
 # - Appstore link
