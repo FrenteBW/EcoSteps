@@ -23,22 +23,27 @@
 
 # -핵심 코드
     HealthKitManager
-    //하루 기준 계단 오르기 횟수
+    //하루 기준 계단 오르기 수행 횟수 측정
     func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
+    
+    //하루를 나타낼 수 있도록 시간 기준 설정
         let calendar = Calendar.current
-        
         let startDate = calendar.startOfDay(for: Date())
         let endDate = Date()
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
         
+    //설정한 시간 기준을 바탕으로 predicate 설정, 이는 아래 query에서 사용
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
+       
+    //query 정의, 계단 오르기 데이터를 불러오며 위에서 설정한 predicate를 바탕으로 시간 설정
         let query = HKSampleQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
             guard error == nil, let samples = results as? [HKQuantitySample] else {
                 completion(0.0)
                 return
             }
-            
+    //계단 오르기 수행 횟수 정의       
             var totalFlightsClimbed = 0.0
 
+    //계단 오르기 데이터가 업데이트 될 때마다 count를 늘려줌. 사용자가 만약 apple watch와 iPhone을 동시에 사용 시 중복을 막기위해 watch 데이터는 포함하지 않음.
             for sample in samples {
                 if !sample.description.contains("Watch"){
                     totalFlightsClimbed += 1
@@ -51,21 +56,28 @@
     }
     
     //월간 계단 오르기 횟수
+    //월간 기준 계단 오르기 수행 횟수 측정
     func monthreadStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
+    //한 달의 기간을 나타낼 수 있도록 시간 기준 설정
         let calendar = Calendar.current
         let now = Date()
         let startDate = calendar.date(from: calendar.dateComponents([.year, .month], from: calendar.startOfDay(for: now)))!
         let endDate = Date()
+        
+    //설정한 시간 기준을 바탕으로 predicate 설정, 이는 아래 query에서 사용
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
         
+    //query 정의, 계단 오르기 데이터를 불러오며 위에서 설정한 predicate를 바탕으로 시간 설정
         let query = HKSampleQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
             guard error == nil, let samples = results as? [HKQuantitySample] else {
                 completion(0.0)
                 return
             }
             
+    //월간 계단 오르기 수행 횟수 정의
             var monthtotalFlightsClimbed = 0.0
 
+    //계단 오르기 데이터가 업데이트 될 때마다 count를 늘려줌. 사용자가 만약 apple watch와 iPhone을 동시에 사용 시 중복을 막기위해 watch 데이터는 포함하지 않음.
             for sample in samples {
                 if !sample.description.contains("Watch"){
                     monthtotalFlightsClimbed += 1
