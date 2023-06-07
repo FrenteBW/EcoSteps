@@ -9,196 +9,101 @@ import SwiftUI
 
 struct SecondView: View {
     @EnvironmentObject var vm: HealthKitViewModel
+    let description: Descriptions
     
     var body: some View {
         ZStack(alignment: .leading) {
             Color("background")
-            .edgesIgnoringSafeArea(.all)
-        VStack {
-            if vm.isAuthorized {
-                VStack() {
-                    Text("Weekly & Monthly Data")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.black)
-                        .padding()
-                    
-                    ScrollView(.vertical, showsIndicators: false) {
-                        
-                         Group {
-                         Text("Daily Data")
-                            .font(.title2)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                if vm.isAuthorized {
+                    VStack() {
+                        Text("Weekly & Monthly Data")
+                            .font(.title)
                             .bold()
                             .foregroundColor(.black)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                                 
-                         Text("Today")
-                            .fontWeight(.regular)
-                            .bold()
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                             
-                         VStack(alignment: .leading){
-                         Text("Daily step count")
-                         .bold()
-                         .foregroundColor(.gray)
-                         Text(" ")
-                         .bold()
-                         Text("\(vm.userStepCount) floors")
-                         .font(.title2)
-                         .foregroundColor(.blue)
-                         .bold()
-                         }
-                         .frame(maxWidth: .infinity, alignment: .leading)
-                         .padding()
-                         .foregroundColor(.white)
-                         .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                         //.background(.white)
-                         .cornerRadius(20, corners: [.allCorners])
-                         
-                         VStack(alignment: .leading){
-                         Text("Daily calorie consumption")
-                         .bold()
-                         .foregroundColor(.gray)
-                         Text(" ")
-                         .bold()
-                         Text("\(Int((Double(vm.userStepCount) ?? 0.0)*2.4)) Kcal")
-                         .font(.title2)
-                         .bold()
-                         .foregroundColor(.red)
-                         }
-                         .frame(maxWidth: .infinity, alignment: .leading)
-                         .padding()
-                         .foregroundColor(.white)
-                         .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                         //.background(.white)
-                         .cornerRadius(20, corners: [.allCorners])
-                         }
+                            .padding()
                         
-                        Group {
-                            Text(" ")
-                               .fontWeight(.regular)
-                            Text("Weekly Data")
-                                .font(.title2)
-                                .bold()
-                                .foregroundColor(.black)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("\(Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!, style: .date) ~ Today")
-                            //Text("1 week ago ~ Today")
-                                .fontWeight(.regular)
-                                .bold()
-                                .foregroundColor(.gray)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                        ScrollView(.vertical, showsIndicators: false) {
                             
-                            VStack(alignment: .leading){
-                                Text("Weekly step count")
-                                    .bold()
-                                    .foregroundColor(.gray)
-                                Text(" ")
-                                    .bold()
-                                Text("\(vm.weekuserStepCount) floors")
+                            Group {
+                                Text("Daily Data")
                                     .font(.title2)
                                     .bold()
-                                    .foregroundColor(.blue)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                            //.background(.white)
-                            .cornerRadius(20, corners: [.allCorners])
-                            
-                            VStack(alignment: .leading){
-                                Text("Weekly calorie consumption")
+                                    .foregroundColor(.black)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Text("Today")
+                                    .fontWeight(.regular)
                                     .bold()
                                     .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                CustomCountView(title: "Daily step count", datavalue: vm.userStepCount, unit: "Floors")
+
+                                CustomCountView(title: "Daily calorie consumption", datavalue: String((Int((Double(vm.userStepCount) ?? 0.0)*2.4))), unit: "Kcal")
+                            }
+                            
+                            Group {
                                 Text(" ")
-                                    .bold()
-                                Text("\(Int((Double(vm.weekuserStepCount) ?? 0.0)*2.4)) Kcal")
+                                    .fontWeight(.regular)
+                                Text("Weekly Data")
                                     .font(.title2)
                                     .bold()
-                                    .foregroundColor(.red)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                            //.background(.white)
-                            .cornerRadius(20, corners: [.allCorners])
-                        }
-                        
-                        Group {
-                            Text(" ")
-                               .fontWeight(.regular)
-                            Text("Monthly Data")
-                                .font(.title2)
-                                .bold()
-                                .foregroundColor(.black)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Text("\(Calendar.current.date(byAdding: .month, value: -1, to: Date())!, style: .date) ~ Today")
-                            //Text("1 month ago ~ Today")
-                                .fontWeight(.regular)
-                                .bold()
-                                .foregroundColor(.gray)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            VStack(alignment: .leading){
-                                Text("Monthly step count")
+                                    .foregroundColor(.black)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text("\(Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!, style: .date) ~ Today")
+                                    .fontWeight(.regular)
                                     .bold()
                                     .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                CustomCountView(title: "Weekly step count", datavalue: vm.weekuserStepCount, unit: "Floors")
+
+                                CustomCountView(title: "Weekly calorie consumption", datavalue: String((Int((Double(vm.weekuserStepCount) ?? 0.0)*2.4))), unit: "Kcal")
+                            }
+                            
+                            Group {
                                 Text(" ")
-                                    .bold()
-                                Text("\(vm.monthuserStepCount) floors")
+                                    .fontWeight(.regular)
+                                Text("Monthly Data")
                                     .font(.title2)
                                     .bold()
-                                    .foregroundColor(.blue)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                            //.background(.white)
-                            .cornerRadius(20, corners: [.allCorners])
-                            
-                            VStack(alignment: .leading){
-                                Text("Monthly calorie consumption")
+                                    .foregroundColor(.black)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Text("\(Calendar.current.date(byAdding: .month, value: -1, to: Date())!, style: .date) ~ Today")
+                                //Text("1 month ago ~ Today")
+                                    .fontWeight(.regular)
                                     .bold()
                                     .foregroundColor(.gray)
-                                Text(" ")
-                                    .bold()
-                                Text("\(Int((Double(vm.monthuserStepCount) ?? 0.0)*2.4)) Kcal")
-                                    .font(.title2)
-                                    .bold()
-                                    .foregroundColor(.red)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                CustomCountView(title: "Monthly step count", datavalue: vm.monthuserStepCount, unit: "Floors")
+
+                                CustomCountView(title: "Monthly calorie consumption", datavalue: String((Int((Double(vm.monthuserStepCount) ?? 0.0)*2.4))), unit: "Kcal")
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                            //.background(.white)
-                            .cornerRadius(20, corners: [.allCorners])
                         }
                     }
-            }
-            } else {
-                VStack(alignment: .leading) {
-                    Image("HealthKitImage")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:100, height:100)
+                } else {
+                    VStack(alignment: .leading) {
+                        Image("HealthKitImage")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:100, height:100)
+                        
+                        Text(" To use the app, you need to synchronize with your health data.\n")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.black)
+                        
+                        Text(description.initialViewDescription)
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                    }
+                    .padding()
                     
-                    Text(" To use the app, you need to synchronize with your health data.\n")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.black)
-                    
-                    Text(" This app uses Apple health's flights climbed data to calculate calories consumed through stair climbing and CO2 emission reductions through stair climbing. To use these features, please allow permission to access Apple health data. This app only uses data related to stair climbing. The settings for permissions can be modified in the Settings app -> apple health -> Data access.\n")
-                        .font(.subheadline)
-                        .foregroundColor(.black)
-                }
-                .padding()
-                
-                HStack(alignment: .center){
+                    HStack(alignment: .center){
                         Button {
                             vm.healthRequest()
                         } label: {
@@ -211,23 +116,16 @@ struct SecondView: View {
                         .buttonStyle(.borderedProminent)
                         .cornerRadius(20)
                         .controlSize(.large)
-                        //.buttonStyle()
+                    }
+                    .padding()
                 }
-                .padding()
+            }
+            .padding()
+            .onAppear {
+                vm.readStepsTakenToday()
+                vm.weekreadStepsTakenToday()
+                vm.monthreadStepsTakenToday()
             }
         }
-        .padding()
-        .onAppear {
-            vm.readStepsTakenToday()
-            vm.weekreadStepsTakenToday()
-            vm.monthreadStepsTakenToday()
-        }
-        }
-    }
-}
-
-struct SecondView_Previews: PreviewProvider {
-    static var previews: some View {
-        SecondView()
     }
 }

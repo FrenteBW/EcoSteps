@@ -13,13 +13,11 @@ class HealthKitViewModel: ObservableObject {
     private var healthStore = HKHealthStore()
     private var healthKitManager = HealthKitManager()
     @Published var userStepCount = ""
-    //추가
     @Published var weekuserStepCount = ""
     @Published var monthuserStepCount = ""
     @Published var userStepCountPerform = ""
-    @Published var isAuthorized = false
-    //추가
     @Published var monthuserStepCountPerform = ""
+    @Published var isAuthorized = false
     
     init() {
         changeAuthorizationStatus()

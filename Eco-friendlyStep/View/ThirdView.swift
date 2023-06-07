@@ -10,6 +10,7 @@ import SwiftUI
 struct ThirdView: View {
     @EnvironmentObject var vm: HealthKitViewModel
     @State private var ThirdViewisShowingPopover = false
+    let description: Descriptions
     
     var body: some View {
         ZStack {
@@ -27,18 +28,17 @@ struct ThirdView: View {
 
                         Spacer()
                         Text("You saved")
-                            //.fontWeight(.bold)
+                            .fontWeight(.semibold)
                             .font(.title2)
                             .foregroundColor(.black)
                         Text("\(Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7))g")
                             .fontWeight(.bold)
                             .font(.title)
                             .foregroundColor(.green)
-                        Text("of CO2 in this month.")
-                            //.fontWeight(.bold)
+                        Text("of CO2 in this month!")
+                            .fontWeight(.semibold)
                             .font(.title2)
                             .foregroundColor(.black)
-                            
                         
                         Spacer()
                         
@@ -78,7 +78,7 @@ struct ThirdView: View {
                                             .foregroundColor(.black)
                                             .font(.title)
                                             .bold()
-                                        Text(" 1. The amount of CO2 reduction is calculated by assuming that user used stair climbing instead of elevator. It is calculated that there is a 12.7g CO2 reduction effect per number of stair climbing performances.\n\n 2.  The tree picture changes according to the amount of CO2 emission reduction. Leaf shapes appear when emissions are 0 to 500g, small tree appear when emissions are 500 to 2000g, and big tree appear when emissions are more than 2000g. However, in reality, each tree has different CO2 absorption depending on its size, environment, and type. Therefore, the amount of CO2 absorbed by the tree in the picture and the amount of CO2 reduction may not be exactly the same.\n\n 3. The above results may differ slightly from the actual results.\n")
+                                        Text(description.thirdViewDescription)
                                             .foregroundColor(.black)
                                             .padding()
                                     }
@@ -86,7 +86,6 @@ struct ThirdView: View {
                             }
                         }
                             .padding()
-                            //.padding(.bottom, 20)
                     }
                 }
                 else {
@@ -100,8 +99,8 @@ struct ThirdView: View {
                             .font(.title)
                             .bold()
                             .foregroundColor(.black)
-                        
-                        Text(" This app uses Apple health's flights climbed data to calculate calories consumed through stair climbing and CO2 emission reductions through stair climbing. To use these features, please allow permission to access Apple health data. This app only uses data related to stair climbing. The settings for permissions can be modified in the Settings app -> apple health -> Data access.\n")
+
+                        Text(description.initialViewDescription)
                             .font(.subheadline)
                             .foregroundColor(.black)
                     }
@@ -120,7 +119,6 @@ struct ThirdView: View {
                             .buttonStyle(.borderedProminent)
                             .cornerRadius(20)
                             .controlSize(.large)
-                            //.buttonStyle()
                     }
                     .padding()
                 }
@@ -131,11 +129,5 @@ struct ThirdView: View {
                 vm.monthreadStepsperformTakenToday()
             }
         }
-    }
-}
-
-struct ThirdView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThirdView()
     }
 }

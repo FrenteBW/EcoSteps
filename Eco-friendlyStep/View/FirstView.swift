@@ -10,12 +10,12 @@ import SwiftUI
 struct FirstView: View {
     @EnvironmentObject var vm: HealthKitViewModel
     @State private var isShowingPopover = false
-    //add
     @State private var isShownSheet = false
     @State private var presentAlert = false
     @AppStorage("climbstair") var climbstair: Int = 15
     @AppStorage("calories") var calories: Int = 100
     @AppStorage("CO2") var CO2: Int = 50
+    let description: Descriptions
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -181,7 +181,7 @@ struct FirstView: View {
                                                 .foregroundColor(.black)
                                                 .font(.title)
                                                 .bold()
-                                            Text(" 1. The app calculates that about 2.4 kcal is consumed every time a user goes up one stair.\n\n 2. The amount of CO2 reduction is calculated by assuming that user used stair climbing instead of elevator. It is calculated that there is a 12.7g CO2 reduction effect per number of stair climbing performances.\n\n 3.  Data is based on the same data source as Apple's health app.\n\n 4.  If you want to set data access rights, you can access and control health apps -> flights climbed -> data sources and access.\n\n 5.  This app's stair climbing data is recorded only when you move with an iPhone. Not recognized if only Apple Watch is worn and moved.\n\n 6. The above results may differ slightly from the actual results.\n")
+                                            Text(description.firstViewDescroption)
                                                 .foregroundColor(.black)
                                                 .padding()
                                              }
@@ -208,8 +208,7 @@ struct FirstView: View {
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(.black)
-                            
-                            Text(" This app uses Apple health's flights climbed data to calculate calories consumed through stair climbing and CO2 emission reductions through stair climbing. To use these features, please allow permission to access Apple health data. This app only uses data related to stair climbing. The settings for permissions can be modified in the Settings app -> Apple health -> Data access.\n")
+                            Text(description.initialViewDescription)
                                 .font(.subheadline)
                                 .foregroundColor(.black)
                         }

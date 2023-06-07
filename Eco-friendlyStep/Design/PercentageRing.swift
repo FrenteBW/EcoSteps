@@ -155,17 +155,3 @@ struct PercentageRing: View {
         return false
     }
 }
-
-struct PreviewView: View {
-    var body: some View {
-        Group {
-            PercentageRing(
-                ringWidth: 50, percent: 5 ,
-                backgroundColor: Color.green.opacity(0.2),
-                foregroundColors: [.green, .blue]
-            )
-            .frame(width: 300, height: 300)
-            .previewLayout(.sizeThatFits)
-        }
-    }
-}

@@ -88,8 +88,8 @@ class HealthKitManager {
     func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         let calendar = Calendar.current
         
-        let startDate = calendar.startOfDay(for: Date()) // e.g., beginning of today
-        let endDate = Date() // e.g., now
+        let startDate = calendar.startOfDay(for: Date())
+        let endDate = Date()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
         
         let query = HKSampleQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
@@ -99,11 +99,7 @@ class HealthKitManager {
             }
             
             var totalFlightsClimbed = 0.0
-            /*
-             for sample in samples {
-             totalFlightsClimbed += Int(sample.quantity.doubleValue(for: HKUnit.count()))
-             }
-             */
+
             for sample in samples {
                 if !sample.description.contains("Watch"){
                     totalFlightsClimbed += 1
@@ -120,7 +116,7 @@ class HealthKitManager {
         let calendar = Calendar.current
         let now = Date()
         let startDate = calendar.date(from: calendar.dateComponents([.year, .month], from: calendar.startOfDay(for: now)))!
-        let endDate = Date() // e.g., now
+        let endDate = Date()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
         
         let query = HKSampleQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .flightsClimbed)!, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
