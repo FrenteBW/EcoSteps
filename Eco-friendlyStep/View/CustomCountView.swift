@@ -21,7 +21,6 @@ struct CustomCountView: View {
                 .foregroundColor(.gray)
             Text(" ")
                 .bold()
-            //Text("\(datavalue) floors")
             HStack{
                 Text("\(datavalue)")
                 Text(unit)

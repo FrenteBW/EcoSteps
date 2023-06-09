@@ -12,6 +12,7 @@
 		7A6E65132992154400975AD7 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E65122992154400975AD7 /* SecondView.swift */; };
 		7A6E6517299215AD00975AD7 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6516299215AD00975AD7 /* ThirdView.swift */; };
 		7A7466DC2A2F0C3100A00F91 /* Descriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7466DB2A2F0C3100A00F91 /* Descriptions.swift */; };
+		7A9B1D872A33094D009EA602 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B1D862A33094D009EA602 /* AuthView.swift */; };
 		7ABB1422299B43EE001133B5 /* PercentageRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB1421299B43EE001133B5 /* PercentageRing.swift */; };
 		7ABB1425299B5096001133B5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB1424299B5096001133B5 /* Extension.swift */; };
 		7AF36E362990B52E0055A1F1 /* Eco_friendlyStepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF36E352990B52E0055A1F1 /* Eco_friendlyStepApp.swift */; };
@@ -41,6 +42,7 @@
 		7A6E65122992154400975AD7 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		7A6E6516299215AD00975AD7 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		7A7466DB2A2F0C3100A00F91 /* Descriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptions.swift; sourceTree = "<group>"; };
+		7A9B1D862A33094D009EA602 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		7ABB1421299B43EE001133B5 /* PercentageRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageRing.swift; sourceTree = "<group>"; };
 		7ABB1424299B5096001133B5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7AC6615129A49C8A00639738 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -74,6 +76,7 @@
 				7A6E65122992154400975AD7 /* SecondView.swift */,
 				7A6E6516299215AD00975AD7 /* ThirdView.swift */,
 				7A55742A2A306C9200E3AC8C /* CustomCountView.swift */,
+				7A9B1D862A33094D009EA602 /* AuthView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				7A6E6517299215AD00975AD7 /* ThirdView.swift in Sources */,
 				7A6E65132992154400975AD7 /* SecondView.swift in Sources */,
+				7A9B1D872A33094D009EA602 /* AuthView.swift in Sources */,
 				7AF36E382990B52E0055A1F1 /* ContentView.swift in Sources */,
 				7A6E65112992153900975AD7 /* FirstView.swift in Sources */,
 				7A55742B2A306C9300E3AC8C /* CustomCountView.swift in Sources */,

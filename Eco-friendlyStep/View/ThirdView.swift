@@ -89,41 +89,11 @@ struct ThirdView: View {
                     }
                 }
                 else {
-                    VStack(alignment: .leading) {
-                        Image("HealthKitImage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:100, height:100)
-                        
-                        Text(" To use the app, you need to synchronize with your health data.\n")
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.black)
-
-                        Text(description.initialViewDescription)
-                            .font(.subheadline)
-                            .foregroundColor(.black)
-                    }
-                    .padding()
-                    
-                    HStack(alignment: .center){
-                            Button {
-                                vm.healthRequest()
-                            } label: {
-                                Text("Authorize Health data")
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
-                            }
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .buttonStyle(.borderedProminent)
-                            .cornerRadius(20)
-                            .controlSize(.large)
-                    }
-                    .padding()
+                    AuthView(description: description)
                 }
             }
             .padding()
+
             .onAppear {
                 vm.monthreadStepsTakenToday()
                 vm.monthreadStepsperformTakenToday()

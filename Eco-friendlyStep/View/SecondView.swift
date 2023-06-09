@@ -40,7 +40,7 @@ struct SecondView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 CustomCountView(title: "Daily step count", datavalue: vm.userStepCount, unit: "Floors")
-
+                                
                                 CustomCountView(title: "Daily calorie consumption", datavalue: String((Int((Double(vm.userStepCount) ?? 0.0)*2.4))), unit: "Kcal")
                             }
                             
@@ -59,7 +59,7 @@ struct SecondView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 CustomCountView(title: "Weekly step count", datavalue: vm.weekuserStepCount, unit: "Floors")
-
+                                
                                 CustomCountView(title: "Weekly calorie consumption", datavalue: String((Int((Double(vm.weekuserStepCount) ?? 0.0)*2.4))), unit: "Kcal")
                             }
                             
@@ -80,44 +80,13 @@ struct SecondView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 CustomCountView(title: "Monthly step count", datavalue: vm.monthuserStepCount, unit: "Floors")
-
+                                
                                 CustomCountView(title: "Monthly calorie consumption", datavalue: String((Int((Double(vm.monthuserStepCount) ?? 0.0)*2.4))), unit: "Kcal")
                             }
                         }
                     }
                 } else {
-                    VStack(alignment: .leading) {
-                        Image("HealthKitImage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:100, height:100)
-                        
-                        Text(" To use the app, you need to synchronize with your health data.\n")
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.black)
-                        
-                        Text(description.initialViewDescription)
-                            .font(.subheadline)
-                            .foregroundColor(.black)
-                    }
-                    .padding()
-                    
-                    HStack(alignment: .center){
-                        Button {
-                            vm.healthRequest()
-                        } label: {
-                            Text("Authorize Health data")
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                        }
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .buttonStyle(.borderedProminent)
-                        .cornerRadius(20)
-                        .controlSize(.large)
-                    }
-                    .padding()
+                    AuthView(description: description)
                 }
             }
             .padding()
