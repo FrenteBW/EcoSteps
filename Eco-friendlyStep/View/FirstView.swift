@@ -190,10 +190,8 @@ struct FirstView: View {
                             }
                         .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
-                            //.padding(.bottom, 20)
                             .foregroundColor(.white)
                             .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                            //.background(.white)
                             .cornerRadius(15, corners: [.allCorners])
                         }
                     } else {

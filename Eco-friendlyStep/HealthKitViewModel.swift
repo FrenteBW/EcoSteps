@@ -28,11 +28,9 @@ class HealthKitViewModel: ObservableObject {
         healthKitManager.setUpHealthRequest(healthStore: healthStore) {
             self.changeAuthorizationStatus()
             self.readStepsTakenToday()
-            //추가
             self.weekreadStepsTakenToday()
             self.monthreadStepsTakenToday()
             self.readStepsperformTakenToday()
-            //추가
             self.monthreadStepsperformTakenToday()
         }
     }
@@ -88,6 +86,7 @@ class HealthKitViewModel: ObservableObject {
         }
     }
     
+    //계단 오르기 수행 횟수
     func readStepsperformTakenToday() {
         healthKitManager.readStepCountperform(forToday: Date(), healthStore: healthStore) { stepperform in
             if stepperform != 0.0 {
@@ -98,6 +97,7 @@ class HealthKitViewModel: ObservableObject {
         }
     }
     
+    //월간 계단 오르기 수행 횟수
     func monthreadStepsperformTakenToday() {
         healthKitManager.monthreadStepCountperform(forToday: Date(), healthStore: healthStore) { monthstepperform in
             if monthstepperform != 0.0 {

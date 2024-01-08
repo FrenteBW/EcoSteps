@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct TryHealthKitApp: App {
+    
     var healthVM = HealthKitViewModel()
     
     var body: some Scene {
