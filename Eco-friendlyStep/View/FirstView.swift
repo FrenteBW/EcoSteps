@@ -56,9 +56,8 @@ struct FirstView: View {
                                         Text("Calorie")
                                             .bold()
                                             .foregroundColor(.red)
-                                        PercentageRing(ringWidth: 20, percent: ((Double(vm.userStepCount) ?? 0.0)/Double((calories)))*100*2.4, backgroundColor: Color("redbackgroundcolor"), foregroundColors: [.red])
-                                     
-                                        Text("\(Int((Double(vm.userStepCount) ?? 0.0)*2.4)) / \(calories) Kcal")
+                                        PercentageRing(ringWidth: 20, percent: ((Double(vm.calculateCalories(userStepCount: Double(vm.userStepCount) ?? 0.0)))/Double((calories)))*100, backgroundColor: Color("redbackgroundcolor"), foregroundColors: [.red])
+                                        Text("\(Int(vm.calculateCalories(userStepCount: Double(vm.userStepCount) ?? 0.0))) / \(calories) Kcal") 
                                             .foregroundColor(.red)
                                             .bold()
                                     }
@@ -77,7 +76,7 @@ struct FirstView: View {
                                             .bold()
                                             .foregroundColor(.green)
                                         PercentageRing(ringWidth: 20, percent: ((Double(vm.userStepCountPerform) ?? 0.0)/Double((CO2)))*100*12.7, backgroundColor: Color("greenbackgroundcolor"), foregroundColors: [.green])
-                                        Text("\(Int((Double(vm.userStepCountPerform) ?? 0.0)*12.7)) / \(CO2) g")
+                                        Text("\(Int((Double(vm.userStepCountPerform) ?? 0.0)*12.7)) / \(CO2) g") //수정 필요
                                             .foregroundColor(.green)
                                             .bold()
                                     }

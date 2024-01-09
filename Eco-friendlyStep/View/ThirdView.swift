@@ -31,7 +31,7 @@ struct ThirdView: View {
                             .fontWeight(.semibold)
                             .font(.title2)
                             .foregroundColor(.black)
-                        Text("\(Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7))g")
+                        Text("\(Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7))g") // 수정 필요
                             .fontWeight(.bold)
                             .font(.title)
                             .foregroundColor(.green)
@@ -42,13 +42,13 @@ struct ThirdView: View {
                         
                         Spacer()
                         
-                        if (Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7)) <= 500 {
+                        if (Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7)) <= 500 { // 수정 필요
                             Image("Leaf")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width:400, height:400)
                         }
-                        else if (Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7)) <= 2000 {
+                        else if (Int((Double(vm.monthuserStepCountPerform) ?? 0.0)*12.7)) <= 2000 { //수정 필요
                             Image("SmallTree")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)

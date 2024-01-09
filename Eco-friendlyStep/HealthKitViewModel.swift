@@ -18,6 +18,8 @@ class HealthKitViewModel: ObservableObject {
     @Published var userStepCountPerform = ""
     @Published var monthuserStepCountPerform = ""
     @Published var isAuthorized = false
+    //추가
+    @Published var dailyCalCunsume = ""
     
     init() {
         changeAuthorizationStatus()
@@ -54,6 +56,7 @@ class HealthKitViewModel: ObservableObject {
     }
     
     //MARK: - Read User's Step Count
+    //하루 누적 계단오르기 횟수
     func readStepsTakenToday() {
         healthKitManager.readStepCount(forToday: Date(), healthStore: healthStore) { step in
             if step != 0.0 {
@@ -64,7 +67,7 @@ class HealthKitViewModel: ObservableObject {
         }
     }
     
-    //주간 누적 계단오르기
+    //주간 누적 계단오르기 횟수
     func weekreadStepsTakenToday() {
         healthKitManager.weekreadStepCount(forToday: Date(), healthStore: healthStore) { weekstep in
             if weekstep != 0.0 {
@@ -75,7 +78,7 @@ class HealthKitViewModel: ObservableObject {
         }
     }
     
-    //월간 누적 계단오르기
+    //월간 누적 계단오르기 횟수
     func monthreadStepsTakenToday() {
         healthKitManager.monthreadStepCount(forToday: Date(), healthStore: healthStore) { monthstep in
             if monthstep != 0.0 {
@@ -106,6 +109,20 @@ class HealthKitViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    //추가
+
+    //칼로리 소모량 계산
+    func calculateCalories(userStepCount: Double) -> Double {
+        let caloriesBurned = userStepCount * 2.4
+        return caloriesBurned
+    }
+    
+    //탄소 배출 감소량 계산
+    func calculateCO2(userStepCountPerform: Double) -> Double {
+        let co2Reduction = userStepCountPerform * 12.7
+        return co2Reduction
     }
     
 }

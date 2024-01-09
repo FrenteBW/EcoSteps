@@ -41,7 +41,7 @@ struct SecondView: View {
                                 
                                 CustomCountView(title: "Daily step count", datavalue: vm.userStepCount, unit: "Floors")
                                 
-                                CustomCountView(title: "Daily calorie consumption", datavalue: String((Int((Double(vm.userStepCount) ?? 0.0)*2.4))), unit: "Kcal")
+                                CustomCountView(title: "Daily calorie consumption", datavalue: String((Int(vm.calculateCalories(userStepCount: Double(vm.userStepCount) ?? 0.0)))), unit: "Kcal")
                             }
                             
                             Group {
@@ -60,7 +60,7 @@ struct SecondView: View {
                                 
                                 CustomCountView(title: "Weekly step count", datavalue: vm.weekuserStepCount, unit: "Floors")
                                 
-                                CustomCountView(title: "Weekly calorie consumption", datavalue: String((Int((Double(vm.weekuserStepCount) ?? 0.0)*2.4))), unit: "Kcal")
+                                CustomCountView(title: "Weekly calorie consumption", datavalue: String((Int(vm.calculateCalories(userStepCount: Double(vm.weekuserStepCount) ?? 0.0)))), unit: "Kcal") 
                             }
                             
                             Group {
@@ -73,7 +73,6 @@ struct SecondView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 Text("\(Calendar.current.date(byAdding: .month, value: -1, to: Date())!, style: .date) ~ Today")
-                                //Text("1 month ago ~ Today")
                                     .fontWeight(.regular)
                                     .bold()
                                     .foregroundColor(.gray)
@@ -81,7 +80,7 @@ struct SecondView: View {
                                 
                                 CustomCountView(title: "Monthly step count", datavalue: vm.monthuserStepCount, unit: "Floors")
                                 
-                                CustomCountView(title: "Monthly calorie consumption", datavalue: String((Int((Double(vm.monthuserStepCount) ?? 0.0)*2.4))), unit: "Kcal")
+                                CustomCountView(title: "Monthly calorie consumption", datavalue: String((Int(vm.calculateCalories(userStepCount: Double(vm.monthuserStepCount) ?? 0.0)))), unit: "Kcal")
                             }
                         }
                     }

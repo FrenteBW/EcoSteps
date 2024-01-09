@@ -10,8 +10,8 @@ import HealthKit
 
 class HealthKitManager {
     
+    //health 데이터 접근이 가능한지 체크, 얻고자 하는 데이터 정의(flightsClimbed),사용자에게 권한 요청하는 팝업
     func setUpHealthRequest(healthStore: HKHealthStore, readSteps: @escaping () -> Void) {
-        //health 데이터 접근이 가능한지 체크, 얻고자 하는 데이터 정의(flightsClimbed),사용자에게 권한 요청하는 팝업
         if HKHealthStore.isHealthDataAvailable(), let flightsClimbed = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.flightsClimbed) {
             healthStore.requestAuthorization(toShare: [flightsClimbed], read: [flightsClimbed]) { success, error in
                 if success {
@@ -23,7 +23,7 @@ class HealthKitManager {
         }
     }
     
-    //하루 누적 데이터 정의
+    //하루 계단 오르기 횟수 누적 데이터 정의(Fetch)
     func readStepCount(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .flightsClimbed) else { return }
         let now = Date()
@@ -42,7 +42,7 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    //일주일 누적 데이터 정의
+    //일주일 계단 오르기 횟수 누적 데이터 정의
     func weekreadStepCount(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .flightsClimbed) else { return }
         let now = Date()
@@ -62,7 +62,7 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    //한 달 누적 데이터 정의
+    //한 달 계단 오르기 횟수 누적 데이터 정의
     func monthreadStepCount(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .flightsClimbed) else { return }
         let now = Date()
@@ -84,7 +84,7 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    //하루 계단 오르기 수행 횟수
+    //하루 계단 오르기 수행 횟수 정의
     func readStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         let calendar = Calendar.current
         
@@ -111,7 +111,7 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    //월간 계단 오르기 횟수
+    //월간 계단 오르기 횟수 정의
     func monthreadStepCountperform(forToday: Date, healthStore: HKHealthStore, completion: @escaping (Double) -> Void) {
         let calendar = Calendar.current
         let now = Date()
