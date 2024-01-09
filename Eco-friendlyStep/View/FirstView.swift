@@ -75,8 +75,8 @@ struct FirstView: View {
                                           
                                             .bold()
                                             .foregroundColor(.green)
-                                        PercentageRing(ringWidth: 20, percent: ((Double(vm.userStepCountPerform) ?? 0.0)/Double((CO2)))*100*12.7, backgroundColor: Color("greenbackgroundcolor"), foregroundColors: [.green])
-                                        Text("\(Int((Double(vm.userStepCountPerform) ?? 0.0)*12.7)) / \(CO2) g") //수정 필요
+                                        PercentageRing(ringWidth: 20, percent: ((Double(vm.calculateCO2(userStepCountPerform: Double(vm.userStepCountPerform) ?? 0.0)) )/Double((CO2)))*100, backgroundColor: Color("greenbackgroundcolor"), foregroundColors: [.green])
+                                        Text("\(Int(vm.calculateCO2(userStepCountPerform: Double(vm.userStepCountPerform) ?? 0.0))) / \(CO2) g")
                                             .foregroundColor(.green)
                                             .bold()
                                     }
@@ -159,10 +159,8 @@ struct FirstView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
-                            //.padding(.bottom, 20)
                             .foregroundColor(.white)
                             .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-                            //.background(.white)
                             .cornerRadius(15, corners: [.allCorners])
                             
                         VStack{

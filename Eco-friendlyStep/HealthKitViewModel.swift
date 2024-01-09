@@ -110,8 +110,6 @@ class HealthKitViewModel: ObservableObject {
             }
         }
     }
-    
-    //추가
 
     //칼로리 소모량 계산
     func calculateCalories(userStepCount: Double) -> Double {
