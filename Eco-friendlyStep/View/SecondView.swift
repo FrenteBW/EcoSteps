@@ -61,7 +61,7 @@ struct SecondView: View {
                                 
                                 CustomCountView(title: "Weekly step count", datavalue: vm.weekuserStepCount, unit: "Floors")
                                 
-                                CustomCountView(title: "Weekly calorie consumption", datavalue: String((Int(vm.calculateCalories(userStepCount: Double(vm.weekuserStepCount) ?? 0.0)))), unit: "Kcal") 
+                                CustomCountView(title: "Weekly calorie consumption", datavalue: String((Int(vm.calculateCalories(userStepCount: Double(vm.weekuserStepCount) ?? 0.0)))), unit: "Kcal")
                             }
                             
                             Group {
