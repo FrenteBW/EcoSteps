@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecondView: View {
+    
     @EnvironmentObject var vm: HealthKitViewModel
     let description: Descriptions
     

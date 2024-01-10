@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CustomCountView: View {
+    
     @EnvironmentObject var vm: HealthKitViewModel
     let title: String
     let datavalue: String
@@ -32,7 +33,7 @@ struct CustomCountView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .foregroundColor(.white)
-        .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+        .background(Color("blockbackgroundcolor"))
         .cornerRadius(20, corners: [.allCorners])
     }
 }

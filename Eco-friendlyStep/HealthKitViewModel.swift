@@ -18,8 +18,6 @@ class HealthKitViewModel: ObservableObject {
     @Published var userStepCountPerform = ""
     @Published var monthuserStepCountPerform = ""
     @Published var isAuthorized = false
-    //추가
-    @Published var dailyCalCunsume = ""
     
     init() {
         changeAuthorizationStatus()
@@ -89,6 +87,7 @@ class HealthKitViewModel: ObservableObject {
         }
     }
     
+    //MARK: - Read User's Step count perform
     //계단 오르기 수행 횟수
     func readStepsperformTakenToday() {
         healthKitManager.readStepCountperform(forToday: Date(), healthStore: healthStore) { stepperform in
@@ -111,6 +110,7 @@ class HealthKitViewModel: ObservableObject {
         }
     }
 
+    //MARK: - Calculate Calorie cumsumtion & CO2 emission reduction
     //칼로리 소모량 계산
     func calculateCalories(userStepCount: Double) -> Double {
         let caloriesBurned = userStepCount * 2.4

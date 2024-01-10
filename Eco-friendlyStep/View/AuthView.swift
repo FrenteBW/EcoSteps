@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AuthView: View {
+    
     @EnvironmentObject var vm: HealthKitViewModel
     let description: Descriptions
     

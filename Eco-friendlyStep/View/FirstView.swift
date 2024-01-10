@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FirstView: View {
+    
     @EnvironmentObject var vm: HealthKitViewModel
     @State private var isShowingPopover = false
     @State private var isShownSheet = false
@@ -15,6 +16,7 @@ struct FirstView: View {
     @AppStorage("climbstair") var climbstair: Int = 15
     @AppStorage("calories") var calories: Int = 100
     @AppStorage("CO2") var CO2: Int = 50
+    
     let description: Descriptions
     
     var body: some View {
@@ -45,9 +47,8 @@ struct FirstView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
-                            
                             .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                            .background(Color("blockbackgroundcolor"))
                             .cornerRadius(20, corners: [.allCorners])
                             
                             VStack{
@@ -63,10 +64,8 @@ struct FirstView: View {
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding()
-                                 
-                                    
                                     .foregroundColor(.white)
-                                    .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                                    .background(Color("blockbackgroundcolor"))
                             
                                     .cornerRadius(20, corners: [.allCorners])
                                     
@@ -82,11 +81,8 @@ struct FirstView: View {
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding()
-                
-                                    
                                     .foregroundColor(.white)
-                                    .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
-
+                                    .background(Color("blockbackgroundcolor"))
                                     .cornerRadius(20, corners: [.allCorners])
                                 }
                             }
@@ -117,7 +113,7 @@ struct FirstView: View {
                                                 .keyboardType(.numberPad)
                                                 .foregroundColor(.black)
                                                 .padding()
-                                                .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                                                .background(Color("blockbackgroundcolor"))
                                                 .cornerRadius(15, corners: [.allCorners])
                                             
                                             Text("Calorie")
@@ -128,7 +124,7 @@ struct FirstView: View {
                                                 .keyboardType(.numberPad)
                                                 .foregroundColor(.black)
                                                 .padding()
-                                                .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                                                .background(Color("blockbackgroundcolor"))
                                                 .cornerRadius(15, corners: [.allCorners])
                                             
                                             Text("CO2")
@@ -140,7 +136,7 @@ struct FirstView: View {
                                                 .keyboardType(.numberPad)
                                                 .foregroundColor(.black)
                                                 .padding()
-                                                .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                                                .background(Color("blockbackgroundcolor"))
                                                 .cornerRadius(15, corners: [.allCorners])
 
                                             
@@ -160,7 +156,7 @@ struct FirstView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                            .background(Color("blockbackgroundcolor"))
                             .cornerRadius(15, corners: [.allCorners])
                             
                         VStack{
@@ -188,7 +184,7 @@ struct FirstView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .foregroundColor(.white)
-                            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354, opacity: 0.1))
+                            .background(Color("blockbackgroundcolor"))
                             .cornerRadius(15, corners: [.allCorners])
                         }
                     } else {

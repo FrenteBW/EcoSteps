@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TryHealthKitApp: App {
+struct EcoStepApp: App {
     
     var healthVM = HealthKitViewModel()
     

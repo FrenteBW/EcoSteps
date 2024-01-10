@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ThirdView: View {
+    
     @EnvironmentObject var vm: HealthKitViewModel
     @State private var ThirdViewisShowingPopover = false
     let description: Descriptions
