@@ -10,17 +10,17 @@ import SwiftUI
  struct ContentView: View {
      var body: some View {
          TabView {
-             FirstView(description: Descriptions())
+             FirstView()
                  .tabItem {
                      Label("Today's record", systemImage: "figure.stairs")
                  }
              
-             SecondView(description: Descriptions())
+             SecondView()
                  .tabItem {
                      Label("Weekly & Monthly", systemImage: "calendar")
                  }
              
-             ThirdView(description: Descriptions())
+             ThirdView()
                  .tabItem {
                      Label("CO2", systemImage: "leaf")
                  }

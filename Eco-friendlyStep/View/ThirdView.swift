@@ -11,7 +11,6 @@ struct ThirdView: View {
     
     @EnvironmentObject var vm: HealthKitViewModel
     @State private var ThirdViewisShowingPopover = false
-    let description: Descriptions
     
     var body: some View {
         ZStack {
@@ -81,7 +80,7 @@ struct ThirdView: View {
                                             .foregroundColor(.black)
                                             .font(.title)
                                             .bold()
-                                        Text(description.thirdViewDescription)
+                                        Text(Descriptions.thirdViewDescription)
                                             .foregroundColor(.black)
                                             .padding()
                                     }
@@ -92,7 +91,7 @@ struct ThirdView: View {
                     }
                 }
                 else {
-                    AuthView(description: description)
+                    AuthView()
                 }
             }
             .padding()

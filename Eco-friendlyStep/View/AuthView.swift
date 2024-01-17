@@ -10,7 +10,6 @@ import SwiftUI
 struct AuthView: View {
     
     @EnvironmentObject var vm: HealthKitViewModel
-    let description: Descriptions
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,7 +23,7 @@ struct AuthView: View {
                 .bold()
                 .foregroundColor(.black)
             
-            Text(description.initialViewDescription)
+            Text(Descriptions.initialViewDescription)
                 .font(.subheadline)
                 .foregroundColor(.black)
         }

@@ -10,7 +10,6 @@ import SwiftUI
 struct SecondView: View {
     
     @EnvironmentObject var vm: HealthKitViewModel
-    let description: Descriptions
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -86,7 +85,7 @@ struct SecondView: View {
                         }
                     }
                 } else {
-                    AuthView(description: description)
+                    AuthView()
                 }
             }
             .padding()

@@ -17,8 +17,6 @@ struct FirstView: View {
     @AppStorage("calories") var calories: Int = 100
     @AppStorage("CO2") var CO2: Int = 50
     
-    let description: Descriptions
-    
     var body: some View {
         ZStack(alignment: .leading) {
             Color("background")
@@ -174,7 +172,7 @@ struct FirstView: View {
                                                 .foregroundColor(.black)
                                                 .font(.title)
                                                 .bold()
-                                            Text(description.firstViewDescroption)
+                                            Text(Descriptions.firstViewDescription)
                                                 .foregroundColor(.black)
                                                 .padding()
                                              }
@@ -188,7 +186,7 @@ struct FirstView: View {
                             .cornerRadius(15, corners: [.allCorners])
                         }
                     } else {
-                        AuthView(description: description)
+                        AuthView()
                     }
                 }
                     .padding()
