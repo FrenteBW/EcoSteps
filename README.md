@@ -97,6 +97,7 @@ https://apps.apple.com/kr/app/ecosteps/id6445834763
 # - Update
 
 2023.06.09 : 디자인 수정 및 코드 리팩토링
+
 2024.01.11 : 전체 코드 리팩토링 진행 및 새 버전 출시
 
 # - Contact 
